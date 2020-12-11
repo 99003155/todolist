@@ -1,30 +1,77 @@
+# import tkinter functions
+
 import tkinter
 from tkinter import *
+
+# import messagebox
+
 from tkinter import messagebox
+
+# list to store the work to be done
+
 work_to_do = []
 
 
-def new_task():
-    val = insertField.get() + '\n'
-    work_to_do.append(val)
-    TextArea.insert('end -1 chars', ' To do: ' + val)
+# function to insert tasks
 
+def new_task():
+    val = newfield.get() + '\n'
+    work_to_do.append(val)
+    textbox.insert('end -1 chars', ' To do: ' + val)
+
+
+# main code
 
 if __name__ == '__main__':
-    window = Tk()
-    window.configure(background='yellow')
-    window.title('THE TO-DO APP')
-    window.geometry('355x310')
-    enterTask = Label(window, text='My Work Today', bg='light blue')
-    insertField = Entry(window)
-    Submit = Button(window, text="Let's start", fg='Black',
-                    bg='light blue', command=new_task)
-    TextArea = Text(window, height=6, width=30, font='arial 14')
-    Exit = Button(window, text='EXIT', fg='Black', bg='pink',
+
+    # create a window
+
+    todoapp = Tk()
+
+    # configure the background colour
+
+    todoapp.configure(background='yellow')
+
+    # title of the app
+
+    todoapp.title('THE TO-DO APP')
+
+    # window dimensions
+
+    todoapp.geometry('355x310')
+
+    # title for the to do list
+    # display text using Label
+
+    entry = Label(todoapp, text='My Work Today', bg='light blue')
+
+    # text box to enter the list
+
+    newfield = Entry(todoapp)
+
+    # saves the items of the to do list
+
+    save = Button(todoapp, text="Let's start", fg='Black',
+                  bg='light blue', command=new_task)
+
+    # text box for the entries
+
+    textbox = Text(todoapp, height=6, width=30, font='arial 14')
+
+    # exit the application
+    # create exit button
+
+    exit = Button(todoapp, text='EXIT', fg='Black', bg='pink',
                   command=exit)
-    enterTask.grid(row=0, column=2)
-    insertField.grid(row=1, column=2, ipadx=50)
-    Submit.grid(row=2, column=2)
-    TextArea.grid(row=3, column=2, padx=10, sticky=W)
-Exit.grid(row=7, column=2)
-window.mainloop()
+
+    # provide coordinates
+
+    entry.grid(row=0, column=2)
+    newfield.grid(row=1, column=2, ipadx=50)
+    save.grid(row=2, column=2)
+    textbox.grid(row=3, column=2, padx=10, sticky=W)
+    exit.grid(row=7, column=2)
+
+# create window to execute
+
+todoapp.mainloop()
