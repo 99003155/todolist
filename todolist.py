@@ -1,78 +1,138 @@
-# import tkinter functions
+# import the sys modules
 
-import tkinter
-from tkinter import *
+import sys
 
-# import messagebox
+# global variable declared to count each of the work to be done
 
-from tkinter import messagebox
-
-# list to store the work to be done
-
-work_to_do = []
+count = 0
 
 
-# function to insert tasks
+# creating subuser class
 
-def new_task():
-    val = newfield.get() + '\n'
-    work_to_do.append(val)
-    textbox.insert('end -1 chars', ' To do: ' + val)
+class SubUser:
+
+    # constructor
+
+    def __init__(self, name):
+
+        self.name = name
+
+    # to display name
+
+    def display_name(self):
+
+        print self.name
 
 
-# main code
+# Inherited class
+
+class MainUser(SubUser):
+
+    pass
+
+
+# display user
+
+n = MainUser('Hello User')
+
+n.display_name()
+
+
+# create Work class
+
+class Work:
+
+    # constructor
+
+    def __init__(self, work_todo):
+        self.work_todo = work_todo
+        global count
+        count += 1
+        self.id = count
+
+
+# create class with functions to be performed
+
+class WorkToDo:
+
+    # constructor
+
+    def __init__(self):
+        self.work = []
+
+# insert a new task
+
+    def start_work(self, work_todo):
+        self.work.append(Work(work_todo))
+
+        # find the completed task
+
+    def find(self, cnt):
+        for work_todo in self.work:
+            if str(work_todo.id) == str(work_todo.id):
+                return work_todo
+        return None
+
+    # complete a task
+
+    def end_work(self, cnt):
+        task = self.find(cnt)
+
+
+# main class
+
+class Main:
+
+    # constructor
+
+    def __init__(self):
+        self.worktodo = WorkToDo()
+        self.options = {'1': self.start, '2': self.end, '3': self.exit}
+
+        # display the list
+
+    def choose(self):
+        print ("""
+            WELCOME TO THE TO-DO LIST
+            Please choose your option
+            1. Work to do today
+            2. Work completed
+            3. Exit application
+            """)
+# run the functions
+
+    def begin(self):
+
+        while True:
+            self.choose()
+            number = input('Choose your option ')
+            task = self.options.get(number)
+            if task:
+                task()
+            else:
+                print 'Invalid'.format(number)
+
+                # add the work to be done
+
+    def start(self):
+        work_todo = input('What do you want to do today? ')
+        self.worktodo.start_work(work_todo)
+        print 'Task entered'
+
+        # enter the completed task
+
+    def end(self):
+        id = input('Enter option number: ')
+        print 'Hurray! Work done'
+
+        # exit the application
+
+    def exit(self):
+        print 'Thank you. Have a great day'
+        sys.exit(0)
+
 
 if __name__ == '__main__':
+    Main().begin()
 
-    # create a window
-
-    todoapp = Tk()
-
-    # configure the background colour
-
-    todoapp.configure(background='yellow')
-
-    # title of the app
-
-    todoapp.title('THE TO-DO APP')
-
-    # window dimensions
-
-    todoapp.geometry('355x310')
-
-    # title for the to do list
-    # display text using Label
-
-    entry = Label(todoapp, text='My Work Today', bg='light blue')
-
-    # text box to enter the list
-
-    newfield = Entry(todoapp)
-
-    # saves the items of the to do list
-
-    save = Button(todoapp, text="Let's start", fg='Black',
-                  bg='light blue', command=new_task)
-
-    # text box for the entries
-
-    textbox = Text(todoapp, height=6, width=30, font='arial 14')
-
-    # exit the application
-    # create exit button
-
-    exit = Button(todoapp, text='EXIT', fg='Black', bg='pink',
-                  command=exit)
-
-    # provide coordinates
-
-    entry.grid(row=0, column=2)
-    newfield.grid(row=1, column=2, ipadx=50)
-    save.grid(row=2, column=2)
-    textbox.grid(row=3, column=2, padx=10, sticky=W)
-    exit.grid(row=7, column=2)
-
-# create window to execute
-
-todoapp.mainloop()
-
+    
