@@ -21,7 +21,7 @@ class SubUser:
 
     def display_name(self):
 
-        print self.name
+        print (self.name)
 
 
 # Inherited class
@@ -110,25 +110,25 @@ class Main:
             if task:
                 task()
             else:
-                print 'Invalid'.format(number)
+                print ('Invalid'.format(number))
 
                 # add the work to be done
 
     def start(self):
         work_todo = input('What do you want to do today? ')
         self.worktodo.start_work(work_todo)
-        print 'Task entered'
+        print ('Task entered')
 
         # enter the completed task
 
     def end(self):
         id = input('Enter option number: ')
-        print 'Hurray! Work done'
+        print ('Hurray! Work done')
 
         # exit the application
 
     def exit(self):
-        print 'Thank you. Have a great day'
+        print ('Thank you. Have a great day')
         sys.exit(0)
 
 
